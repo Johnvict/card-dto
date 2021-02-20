@@ -1,3 +1,30 @@
+IMPLEMENT DATA LOADING
+**What does the PR do?**
+This PR implements loading of payment data from store and API
+
+**What are the tasks completed?**
+- [x] Card/Payment data is loaded from API on app load
+- [x] Card/Payment data is also stored to store and updated on new data on both store and API
+- [x] User can now delete card/payment data in realtime
+
+
+**Any background context you want to provide?**
+N/A
+
+**How should the changes be manually tested?**
+- Clone this repository: `git clone https://github.com/Johnvict/card-dto.git`
+- Checkout to branch: `git checkout feat/payment-data`
+
+**Run CLI Commands**
+- `ng serve -o`
+- Check that data is loaded from API
+- Click on Make Payment button to navigate to Payment Page
+- Fill the form and hit submit
+- Click on a Delete Action button and see what happends
+
+Any Screenshot?
+N/A
+
 IMPLEMENT PAYMENT OPERATIONS
 **What does the PR do?**
 This PR implements payment operations
@@ -13,14 +40,20 @@ N/A
 
 **How should the changes be manually tested?**
 - Clone this repository: `git clone https://github.com/Johnvict/card-dto.git`
-- Checkout to branch: `git checkout feat/payment-service`
+- Checkout to branch: `git checkout feat/payment-form`
 
 **Run CLI Commands**
 - `ng serve -o`
-- On app run, check the console to verify that payment service made some request and fetched data
+- Click on Make Payment button to navigate to Payment Page
+- Fill the form to check app behaviour
 
 Any Screenshot?
 N/A
+
+
+![localhost_4200_make-payment](https://user-images.githubusercontent.com/35051689/108607051-3da2ec00-73be-11eb-84fc-4aa53a5d6e4e.png)
+
+
 
 SETUP PAYMENT SERVICE
 **What does the PR do?**

@@ -11,9 +11,15 @@ const cardDataReducer = createReducer(
 		let initialData = [...data.data];
 		return initialData;
 	}),
-	on(CardActions.AddCard, (state, data) => [...state, data]),
+	on(CardActions.AddCard, (state, data) => {
+		let newData = [...state, data.data];
+		console.log(data);
+		return newData;
+		// return state;
+	}),
 	on(CardActions.DeleteCard, (state, data) => {
-		let newState: CardData[] = [...state].splice(data.index, 1);
+		let newState: CardData[] = [...state];
+		newState.splice(data.index, 1);
 		return newState;
 	})
 );

@@ -5,7 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import * as CardActions from './../../store-setup/card.actions';
 
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store-setup/interfaces';
 import { HelpersService } from 'src/app/services/helpers.service';
@@ -53,12 +53,13 @@ export class MakePaymentComponent {
 
 	submitPayment() {
 		this.isLoading.next(true);
-		this.paymentForm.patchValue({
+		const formatedData = {
 			cardNumber: this.helpersService.removeDashes(this.paymentForm.value.cardNumber)
-		})
+		};
 
 		this.paymentService.post(this.paymentForm.value).subscribe(data => {
-			this.store.dispatch(CardActions.AddCard(data));
+			this.store.dispatch(CardActions.AddCard({
+				data: {...this.paymentForm.value, cardNumber: this.helpersService.formatCardNumber(formatedData.cardNumber, true)}}));
 			this.notificationService.showToast('Payment successful');
 			this.isLoading.next(false);
 			this.router.navigate(['/']);
