@@ -1,0 +1,39 @@
+
+<div class="title">
+	<h3>Make Payment</h3>
+</div>
+<div class="make-payment">
+	<form [formGroup]="paymentForm" class="example-form" (ngSubmit)="submitPayment()">
+	  <mat-form-field class="full-width">
+		<mat-label>Card Number</mat-label>
+		<input matInput (input)="formatCardNumber($event)" placeholder="1234-5678-9012-3456" formControlName="cardNumber" />
+	</mat-form-field>
+	
+	  <mat-form-field class="full-width">
+		<mat-label>Card Holder</mat-label>
+		<input matInput  placeholder="Firstname Lastname" formControlName="cardHolder" />
+	</mat-form-field>
+	
+	
+	<mat-form-field class="full-width">
+		
+		<mat-label>Expiry Date</mat-label>
+		<input matInput (input)="dateEntered($event)"  placeholder="09/22" formControlName="expiryDate" />
+	</mat-form-field>
+
+	<mat-form-field class="full-width">
+		<mat-label>Security Code (CVV)</mat-label>
+		<input matInput  placeholder="123" formControlName="securityCode" />
+	</mat-form-field>
+	
+	  <mat-form-field class="full-width">
+		<mat-label>Amount</mat-label>
+		<input matInput  placeholder="$1000" formControlName="amount" />
+	  </mat-form-field>
+	
+	  <button matSuffix color="primary" [disabled]="paymentForm.invalid" class="full-width" mat-button type="submit">Submit</button>
+	</form>
+
+
+	<p *ngFor="let card of cardData | async">{{ card.cardHolder }}</p>
+</div>

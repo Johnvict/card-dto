@@ -17,3 +17,4 @@ const cardDataReducer = createReducer(
 export function reducer(state: CardData[] = [], action: Action) {
 	return cardDataReducer(state, action);
 }
+

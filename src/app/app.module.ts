@@ -9,16 +9,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { reducer } from './store-setup/card.reducer';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MakePaymentComponent } from './pages/make-payment/make-payment.component';
+import { MaterialModule } from './material.module';
 @NgModule({
 	declarations: [
-		AppComponent
+		AppComponent,
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
-		StoreModule.forRoot({ cardata: reducer }, {}),
-		BrowserAnimationsModule
+		StoreModule.forRoot({ cardData: reducer }, {}),
+		BrowserAnimationsModule,
+		MaterialModule
 	],
 	providers: [
 		{ provide: DEFAULT_TIMEOUT, useValue: 30000 },
