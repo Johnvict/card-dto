@@ -7,6 +7,10 @@ const initialState: CardData[] = [];
 
 const cardDataReducer = createReducer(
 	initialState,
+	on(CardActions.InitializeCard, (state, data) => {
+		let initialData = [...data.data];
+		return initialData;
+	}),
 	on(CardActions.AddCard, (state, data) => [...state, data]),
 	on(CardActions.DeleteCard, (state, data) => {
 		let newState: CardData[] = [...state].splice(data.index, 1);

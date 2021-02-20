@@ -1,6 +1,6 @@
 
 export interface CardData {
-	cardNumber: number;
+	cardNumber: number | string;
 	cardHolder: string;
 	expiryDate: Date;
 	securityCode?: string;
