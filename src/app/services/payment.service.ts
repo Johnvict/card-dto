@@ -46,7 +46,7 @@ export class PaymentService {
 	preloadData() {
 		this.get()
 			.pipe( /** We need to reformat the card number to make it readable */
-				map(rawData => rawData.map(each => ({ ...each, cardNumber: this.helpersService.formatCardNumber(String(each.cardNumber)) })))
+				map(rawData => rawData.map(each => ({ ...each, cardNumber: this.helpersService.formatCardNumber(String(each.cardNumber), true) })))
 			).subscribe(data => {
 
 				console.log(data);

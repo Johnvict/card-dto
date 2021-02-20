@@ -9,6 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store-setup/interfaces';
 import { HelpersService } from 'src/app/services/helpers.service';
+import { Router } from '@angular/router';
 
 
 
@@ -33,7 +34,8 @@ export class MakePaymentComponent {
 		private paymentService: PaymentService,
 		private store: Store<AppState>,
 		private notificationService: NotificationService,
-		private helpersService: HelpersService
+		private helpersService: HelpersService,
+		private router: Router
 	) {
 
 	}
@@ -59,6 +61,7 @@ export class MakePaymentComponent {
 			this.store.dispatch(CardActions.AddCard(data));
 			this.notificationService.showToast('Payment successful');
 			this.isLoading.next(false);
+			this.router.navigate(['/']);
 		}, error => {
 			this.isLoading.next(false);
 			this.notificationService.showToast('Sorry, an error occured while processing your request')

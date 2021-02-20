@@ -6,7 +6,7 @@
 	<form [formGroup]="paymentForm" class="example-form" (ngSubmit)="submitPayment()">
 	  <mat-form-field class="full-width">
 		<mat-label>Card Number</mat-label>
-		<input matInput maxlength="24" type="number" minlength="16" (input)="formatCardNumber($event)" placeholder="1234-5678-9012-3456" formControlName="cardNumber" />
+		<input matInput maxlength="24" type="tel" minlength="16" (input)="formatCardNumber($event)" placeholder="1234-5678-9012-3456" formControlName="cardNumber" />
 	</mat-form-field>
 	
 	  <mat-form-field class="full-width">

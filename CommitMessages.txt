@@ -1,3 +1,27 @@
+IMPLEMENT PAYMENT OPERATIONS
+**What does the PR do?**
+This PR implements payment operations
+
+**What are the tasks completed?**
+- [x] Payment form is designed and validated
+- [x] Payment data is sent to the server on post request
+- [x] Card number is formatted for easy reading
+- [x] On fetching from API card number is masked, to mock real life scenario when card number is not exposed
+
+**Any background context you want to provide?**
+N/A
+
+**How should the changes be manually tested?**
+- Clone this repository: `git clone https://github.com/Johnvict/card-dto.git`
+- Checkout to branch: `git checkout feat/payment-service`
+
+**Run CLI Commands**
+- `ng serve -o`
+- On app run, check the console to verify that payment service made some request and fetched data
+
+Any Screenshot?
+N/A
+
 SETUP PAYMENT SERVICE
 **What does the PR do?**
 This PR setup payment service and http interceptors
