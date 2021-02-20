@@ -1,0 +1,21 @@
+SETUP TOOLS
+**What does the PR do?**
+This PR setup tools for the app
+
+**What are the tasks completed?**
+- [x] NgRx is installed and configured
+- [x] Angular Material is installed
+
+**Any background context you want to provide?**
+N/A
+
+**How should the changes be manually tested?**
+- Clone this repository: `git clone https://github.com/Johnvict/card-dto.git`
+- Checkout to branch: `git checkout chore/setup-tools`
+
+**Run CLI Commands**
+- `npm install`
+- `ng serve -o`
+
+Any Screenshot?
+N/A
