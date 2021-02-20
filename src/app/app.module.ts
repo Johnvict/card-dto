@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { reducer } from './store-setup/card.reducer';
 @NgModule({
   declarations: [
     AppComponent
@@ -13,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({cardata: reducer}, {}),
     BrowserAnimationsModule
   ],
   providers: [],
