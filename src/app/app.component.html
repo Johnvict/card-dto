@@ -1,12 +1,35 @@
 <mat-toolbar color="primary">
-	<button mat-icon-button routerLink="/">
-	  <mat-icon>home</mat-icon>
-	</button>
-	<span>Card DTO</span>
-	<span class="spacer"></span>
-	<button routerLink="/make-payment" mat-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-	  Make Payment
-	</button>
+  <button mat-icon-button routerLink="/">
+    <mat-icon>home</mat-icon>
+  </button>
+  <span>Card DTO</span>
+  <span class="spacer"></span>
+  <button routerLink="/"mat-button> Home</button>
+  <button routerLink="/make-payment"mat-button> Make Payment</button>
 </mat-toolbar>
 
+<table id="cardsTable" *ngIf="isHomeUrl">
+	<tr>
+		<th>S/N</th>
+		<th>Card Number</th>
+		<th>Card Holder</th>
+		<th>Expiry Date</th>
+		<th>Security Code</th>
+		<th>Amount</th>
+		<th>Action</th>
+	</tr>
+  <tr *ngFor="let card of cardData | async; let i = index">
+	  <td>{{ i + 1 }}</td>
+	  <td>{{ card.cardNumber }}</td>
+	  <td>{{ card.cardHolder }}</td>
+	  <td>{{ card.expiryDate }}</td>
+	  <td>{{ card.securityCode }}</td>
+	  <td>{{ card.amount }}</td>
+	  <td>
+		<button *ngIf="!(isLoading | async) && indexToDelete != i" (click)="deleteCardData(i)" mat-button> Delete</button>
+	  	<mat-spinner class="center" diameter="20" *ngIf="(isLoading | async) && indexToDelete == i"></mat-spinner>
+	</td>
+  </tr>
+</table>
 <router-outlet></router-outlet>
+

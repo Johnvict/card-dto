@@ -1,9 +1,9 @@
-import { HelpersService } from 'src/app/services/helpers.service';
+import { HelpersService } from './helpers.service';
 import { map } from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { AppState, CardData } from "../store-setup/interfaces";
+import { AppState, CardData } from "./../store-setup/interfaces";
 
 import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
@@ -38,6 +38,10 @@ export class PaymentService {
 	 */
 	get(): Observable<CardData[]> {
 		return this.http.get<CardData[]>(this.sheetURL);
+	}
+
+	delete(index: number): Observable<CardData> {
+		return this.http.delete<CardData>(`${this.sheetURL}/${index}`);
 	}
 
 	/**

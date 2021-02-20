@@ -13,7 +13,7 @@ export const InitializeCard = createAction(
 
 export const AddCard = createAction(
 	ADD_CARD,
-	props<CardData>()
+	props<{data: CardData}>()
 );
 
 export const DeleteCard = createAction(
