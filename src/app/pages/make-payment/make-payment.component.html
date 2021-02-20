@@ -1,0 +1,37 @@
+
+<div class="title">
+	<h3>Make Payment</h3>
+</div>
+<div class="make-payment">
+	<form [formGroup]="paymentForm" class="example-form" (ngSubmit)="submitPayment()">
+	  <mat-form-field class="full-width">
+		<mat-label>Card Number</mat-label>
+		<input matInput maxlength="24" type="tel" minlength="16" (input)="formatCardNumber($event)" placeholder="1234-5678-9012-3456" formControlName="cardNumber" />
+	</mat-form-field>
+	
+	  <mat-form-field class="full-width">
+		<mat-label>Card Holder</mat-label>
+		<input matInput minlength="5" type="text"  placeholder="Firstname Lastname" formControlName="cardHolder" />
+	</mat-form-field>
+	
+	
+	<mat-form-field class="full-width">
+		
+		<mat-label>Expiry Date</mat-label>
+		<input matInput maxlength="5" (input)="formatExpiryDate($event)"  placeholder="09/22" formControlName="expiryDate" />
+	</mat-form-field>
+
+	<mat-form-field class="full-width">
+		<mat-label>Security Code (CVV)</mat-label>
+		<input matInput maxlength="4" type="number" placeholder="123" formControlName="securityCode" />
+	</mat-form-field>
+	
+	  <mat-form-field class="full-width">
+		<mat-label>Amount</mat-label>
+		<input matInput min="1"  type="number" placeholder="$1000" formControlName="amount" />
+	  </mat-form-field>
+	
+	  <button *ngIf="!(isLoading | async)" matSuffix color="primary" [disabled]="paymentForm.invalid" class="full-width" mat-button type="submit">Submit</button>
+	  <mat-spinner class="center" diameter="40" *ngIf="isLoading | async"></mat-spinner>
+	</form>
+</div>

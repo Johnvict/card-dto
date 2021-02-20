@@ -1,3 +1,4 @@
+import { NotificationService } from './notification.service';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError, timeout } from 'rxjs/operators';
@@ -7,7 +8,8 @@ export const DEFAULT_TIMEOUT = new InjectionToken<number>('defaultTimeout');
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
 	constructor(
-		@Inject(DEFAULT_TIMEOUT) protected defaultTimeout: number = 30
+		@Inject(DEFAULT_TIMEOUT) protected defaultTimeout: number = 30,
+		private notificationService: NotificationService
 	) { }
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -25,7 +27,7 @@ export class RequestInterceptor implements HttpInterceptor {
 		timer += 1;
 
 		if (!window.navigator.onLine) {
-			return throwError('Please check your internet connection and try again');
+			return throwError(this.manageError('Please check your internet connection and try again'));
 		} else {
 			return next.handle(request).pipe(timeout(timeoutValueNumeric), map((event: HttpEvent<any>) => {
 				const inter = setInterval(() => {
@@ -50,13 +52,17 @@ export class RequestInterceptor implements HttpInterceptor {
 						return throwError(error.error.message);
 					} else {
 						if (error.status === 0) {
-							return throwError('Please check your internet connection and try again');
+							return throwError(this.manageError('Please check your internet connection and try again'));
 						} else {
-							return throwError('Request timeout. Please try again');
+							return throwError(this.manageError('Request timeout. Please try again'));
 						}
 					}
 				})
 			);
 		}
+	}
+
+	manageError(message: string) {
+		this.notificationService.showToast(message);
 	}
 }

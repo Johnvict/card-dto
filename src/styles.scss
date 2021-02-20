@@ -2,3 +2,21 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.spacer {
+	flex: 1 1 auto;
+}
+
+.title {
+	display: block;
+	margin: auto;
+	text-align: center;
+	margin: 5% auto 10px auto;
+	font-weight: 600;
+	color: gray;
+}
+
+.center {
+	display: block;
+    margin: auto;
+}
